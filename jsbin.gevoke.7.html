@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by judittoser (http://jsbin.com/gevoke/8/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Color Clock</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<style id="jsbin-css">
+html, body {
+  height: 100%;
+  }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#clock {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 100px;
+  margin-top: -50px;
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function colorClock(){
+  var date = new Date();
+  
+  var hours = date.getHours();
+    if (hours <= 9) {
+    hours = '0' + hours;
+  }
+  
+  var minutes = date.getMinutes();
+    if (minutes <= 9) {
+    minutes = '0' + minutes;
+  }
+  
+  var seconds = date.getSeconds();
+    if (seconds <= 9) {
+    seconds = '0' + seconds;
+  }
+  
+  var clockFace = hours + ':' + minutes + ':' + seconds;
+  
+  var hex = Math.floor(Math.random() * 16777216);
+  var hexString = hex.toString(16);
+
+        if (hexString.length == 5) 
+        {
+        hexString = "0" + hexString;
+        }
+        else if (hexString.length == 4) 
+        {
+        hexString = "00" + hexString;
+        }
+        else if (hexString.length == 2) 
+        {
+        hexString = "0" + hexString;
+        }
+        else if (hexString.length == 1) 
+        {
+        hexString = "00" + hexString;
+        }
+        else {}
+   
+  var hexColor = '#' + hexString;
+
+  document.getElementById('clock').innerHTML = clockFace;
+  document.body.style.background = hexColor;
+  
+  setTimeout(function() {
+  colorClock();
+}, 1000);
+  
+}
+
+colorClock();
+
+</script>
+</body>
+</html>
